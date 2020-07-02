@@ -30,11 +30,15 @@ from flow.controllers.base_routing_controller import BaseRouter
 from flow.controllers.routing_controllers import ContinuousRouter, \
     GridRouter, BayBridgeRouter
 
+from curbside_controllers import curbsideAccelController, curbsideLaneChangeController, curbsideRouter
+
+
 __all__ = [
     "RLController", "BaseController", "BaseLaneChangeController", "BaseRouter",
     "CFMController", "BCMController", "OVMController", "LinearOVM",
     "IDMController", "SimCarFollowingController", "FollowerStopper",
     "PISaturation", "StaticLaneChanger", "SimLaneChangeController",
     "ContinuousRouter", "GridRouter", "BayBridgeRouter", "LACController",
-    "GippsController", "NonLocalFollowerStopper", "BandoFTLController"
+    "GippsController", "NonLocalFollowerStopper", "BandoFTLController",
+    "curbsideAccelController", "curbsideLaneChangeController", "curbsideRouter"
 ]

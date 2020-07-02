@@ -309,6 +309,7 @@ class TraCIVehicle(KernelVehicle):
 
         # specify the routing controller class
         rt_controller = self.type_parameters[veh_type]["routing_controller"]
+
         if rt_controller is not None:
             self.__vehicles[veh_id]["router"] = \
                 rt_controller[0](veh_id=veh_id, router_params=rt_controller[1])

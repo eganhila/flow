@@ -3,7 +3,7 @@
 import warnings
 from flow.core.kernel.simulation import TraCISimulation, AimsunKernelSimulation
 from flow.core.kernel.network import TraCIKernelNetwork, AimsunKernelNetwork
-from flow.core.kernel.vehicle import TraCIVehicle, AimsunKernelVehicle
+from flow.core.kernel.vehicle import CustomTraCIVehicle, TraCIVehicle, AimsunKernelVehicle
 from flow.core.kernel.traffic_light import TraCITrafficLight, \
     AimsunKernelTrafficLight
 from flow.utils.exceptions import FatalFlowError
@@ -72,6 +72,11 @@ class Kernel(object):
             self.network = AimsunKernelNetwork(self, sim_params)
             self.vehicle = AimsunKernelVehicle(self, sim_params)
             self.traffic_light = AimsunKernelTrafficLight(self)
+        elif simulator == "custom_traci":
+            self.simulation = TraCISimulation(self)
+            self.network = TraCIKernelNetwork(self, sim_params)
+            self.vehicle = CustomTraCIVehicle(self, sim_params)
+            self.traffic_light = TraCITrafficLight(self)
         else:
             raise FatalFlowError('Simulator type "{}" is not valid.'.
                                  format(simulator))

@@ -358,8 +358,8 @@ class Env(gym.Env, metaclass=ABCMeta):
                     route_contr = self.k.vehicle.get_routing_controller(
                         veh_id)
                     routing_actions.append(route_contr.choose_route(self))
-
             self.k.vehicle.choose_routes(routing_ids, routing_actions)
+
 
             self.apply_rl_actions(rl_actions)
 
@@ -385,6 +385,11 @@ class Env(gym.Env, metaclass=ABCMeta):
             # render a frame
             self.render()
 
+
+            # output additional info we want if we are outputing info
+            if self.sim_params.emission_path is not None:
+                self.output_extra_info()
+
         states = self.get_state()
 
         # collect information of the state of the network based on the
@@ -402,6 +407,8 @@ class Env(gym.Env, metaclass=ABCMeta):
 
         # compute the info for each agent
         infos = {}
+
+
 
         # compute the reward
         if self.env_params.clip_actions:
@@ -735,6 +742,15 @@ class Env(gym.Env, metaclass=ABCMeta):
         elif (self.sim_params.render is True) and self.sim_params.save_render:
             # sumo-gui render
             self.k.kernel_api.gui.screenshot("View #0", self.path+"/frame_%06d.png" % self.time_counter)
+
+    def output_extra_info(self):
+        pass
+        #human_idlist = self.k.vehicle.get_human_ids()
+        #machine_idlist = self.k.vehicle.get_rl_ids()
+
+        #for id in human_idlist + machine_idlist:
+        #    self.k.vehicle.get_info()
+
 
     def pyglet_render(self):
         """Render a frame using pyglet."""

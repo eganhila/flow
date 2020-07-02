@@ -741,3 +741,6 @@ class KernelVehicle(object, metaclass=ABCMeta):
         float
         """
         pass
+
+    def get_additional_info(self, veh_id):
+        return self.additional_info[veh_id]
