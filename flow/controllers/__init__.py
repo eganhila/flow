@@ -30,7 +30,7 @@ from flow.controllers.base_routing_controller import BaseRouter
 from flow.controllers.routing_controllers import ContinuousRouter, \
     GridRouter, BayBridgeRouter, I210Router
 
-from curbside.curbside_controllers import curbsideAccelController, curbsideLaneChangeController, curbsideRouter
+from curbside_controllers import curbsideAccelController, curbsideLaneChangeController, curbsideRouter
 
 
 __all__ = [
