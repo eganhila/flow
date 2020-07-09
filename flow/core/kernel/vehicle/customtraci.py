@@ -87,7 +87,7 @@ class CustomTraCIVehicle(TraCIVehicle):
 		elif ":" in edge: x_0 = L_i
 		else: 
 			Nedge = int(edge.strip("parking_"))
-			x_0 = L_i + Nedge * L_P/N_P
+			x_0 = L_i + Nedge * L_p/N_p
 
 		return x_0 + x
 
