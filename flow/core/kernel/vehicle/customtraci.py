@@ -12,7 +12,7 @@ class CustomTraCIVehicle(TraCIVehicle):
 	def init_parking_params(self, veh_id, env):
 		Nzones = env.network.net_params.additional_params["number_parking_zones"]
 
-		default_params = {"desired_pzone":np.random.randint(1,Nzones-1),
+		default_params = {"desired_pzone":np.random.randint(1,Nzones-2),
 					  "t_parking_elapsed":0,
 					  "t_parking_base":100,
 					  "t_parking_offset":0}
@@ -74,6 +74,21 @@ class CustomTraCIVehicle(TraCIVehicle):
 	def get_normalized_distance_to_pzone(self, veh_id, env):
 		L_total = env.network.net_params.additional_params["length_parking"] 
 		return self.get_distance_to_pzone(veh_id, env)/L
+
+	def get_global_position(self, veh_id, env):
+		x = self.get_position(veh_id)
+		edge = self.get_edge(veh_id)
+		N_p = env.network.net_params.additional_params["number_parking_zones"]
+		L_p = env.network.net_params.additional_params["length_parking"]
+		L_i = env.network.net_params.additional_params['length_inflow']
+
+		if edge == "inflow": x_0 = 0
+		elif edge == "outflow": x_0 = L_p + L_i
+		else: 
+			Nedge = int(edge.strip("parking_"))
+			x_0 = L_i + Nedge * L_P/N_P
+
+		return x_0 + x
 
 
 
