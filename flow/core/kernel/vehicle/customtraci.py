@@ -84,6 +84,7 @@ class CustomTraCIVehicle(TraCIVehicle):
 
 		if edge == "inflow": x_0 = 0
 		elif edge == "outflow": x_0 = L_p + L_i
+		elif ":" in edge: x_0 = L_i
 		else: 
 			Nedge = int(edge.strip("parking_"))
 			x_0 = L_i + Nedge * L_P/N_P
