@@ -3,10 +3,11 @@
 import warnings
 from flow.core.kernel.simulation import TraCISimulation, AimsunKernelSimulation
 from flow.core.kernel.network import TraCIKernelNetwork, AimsunKernelNetwork
-from flow.core.kernel.vehicle import CustomTraCIVehicle, TraCIVehicle, AimsunKernelVehicle
+from flow.core.kernel.vehicle import  TraCIVehicle, AimsunKernelVehicle
 from flow.core.kernel.traffic_light import TraCITrafficLight, \
     AimsunKernelTrafficLight
 from flow.utils.exceptions import FatalFlowError
+from customtraci import CustomTraCIVehicle
 
 
 class Kernel(object):
