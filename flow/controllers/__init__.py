@@ -30,8 +30,6 @@ from flow.controllers.base_routing_controller import BaseRouter
 from flow.controllers.routing_controllers import ContinuousRouter, \
     GridRouter, BayBridgeRouter, I210Router
 
-from curbside_controllers import curbsideAccelController, curbsideLaneChangeController, curbsideRouter
-
 
 __all__ = [
     "RLController", "BaseController", "BaseLaneChangeController", "BaseRouter",
@@ -40,6 +38,5 @@ __all__ = [
     "PISaturation", "StaticLaneChanger", "SimLaneChangeController",
     "ContinuousRouter", "GridRouter", "BayBridgeRouter", "LACController",
     "GippsController", "NonLocalFollowerStopper", "BandoFTLController",
-    "curbsideAccelController", "curbsideLaneChangeController", "curbsideRouter",
     "I210Router",
 ]
