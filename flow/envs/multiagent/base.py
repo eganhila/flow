@@ -4,7 +4,7 @@ from copy import deepcopy
 import numpy as np
 import random
 import traceback
-from gym.spaces import Box
+from gym.spaces import Box, Tuple
 
 from traci.exceptions import FatalTraCIError
 from traci.exceptions import TraCIException
@@ -125,7 +125,11 @@ class MultiEnv(MultiAgentEnv, Env):
         for rl_id in self.k.vehicle.get_arrived_rl_ids(self.env_params.sims_per_step):
             done[rl_id] = True
             reward[rl_id] = 0
-            states[rl_id] = np.zeros(self.observation_space.shape[0])
+
+            if type(self.observation_space) == Tuple:
+                states[rl_id] = tuple([np.zeros(obs.shape) for obs in self.observation_space])
+            else:
+                states[rl_id] = np.zeros(self.observation_space.shape[0])
 
         return states, reward, done, infos
 
