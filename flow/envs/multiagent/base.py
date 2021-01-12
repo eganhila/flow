@@ -127,7 +127,7 @@ class MultiEnv(MultiAgentEnv, Env):
             reward[rl_id] = 0
 
             if type(self.observation_space) == Tuple:
-                states[rl_id] = tuple([np.zeros(obs.shape) for obs in self.observation_space])
+                states[rl_id] = tuple([np.zeros(obs.shape, dtype=int) for obs in self.observation_space])
             else:
                 states[rl_id] = np.zeros(self.observation_space.shape[0])
 
