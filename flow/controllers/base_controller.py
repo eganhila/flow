@@ -58,9 +58,13 @@ class BaseController(metaclass=ABCMeta):
         # longitudinal failsafe used by the vehicle
         self.fail_safe = fail_safe
 
-        self.max_accel = car_following_params.controller_params['accel']
-        # max deaccel should always be a positive
-        self.max_deaccel = abs(car_following_params.controller_params['decel'])
+        try:
+            self.max_accel = car_following_params.controller_params['accel']
+            # max deaccel should always be a positive
+            self.max_deaccel = abs(car_following_params.controller_params['decel'])
+        except:
+            self.max_accel = car_following_params["controller_params"]['accel']
+            self.max_deaccel = car_following_params["controller_params"]['accel']
 
         self.car_following_params = car_following_params
 
